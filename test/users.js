@@ -54,7 +54,7 @@ describe('user router',()=>{
     it("user list getting testing",function(done){
         chai.request(server)
         .get('/users/getUser')
-        .send("Authorization",userData.token)
+        .set("Authorization",userData.token)
         .end((err,res)=>{
             chai.expect(res.status).to.equal(200);
             done();
