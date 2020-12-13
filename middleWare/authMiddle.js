@@ -6,6 +6,7 @@ module.exports = (req, res, next) => {
          jwt.verify(token,req.app.get('scretKey'),(err,data)=>{
              if(data)
              {
+                 req.userData=data;
                  next();
              }else{
                  res.status(401).json({

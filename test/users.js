@@ -31,7 +31,7 @@ describe('user router',()=>{
                 username:userData.username,
                 password: userData.password,
                 email: userData.email,
-                age: userData.age,
+                age: userData.age
             }
         ).end((err,res)=>{
             chai.expect(res.status).to.equal(200);
@@ -51,13 +51,22 @@ describe('user router',()=>{
                     done();
                 });
     });
+    it("user list getting testing",function(done){
+        chai.request(server)
+        .get('/users/getUser')
+        .send("Authorization",userData.token)
+        .end((err,res)=>{
+            chai.expect(res.status).to.equal(200);
+            done();
+        })
+    });
     it("delete testing",function(done){
-            chai.request(server).post('/users/delete')
-            .send({uid:userData.uid})
-            .set("Authorization",userData.token)
-            .end((err,res)=>{
-                chai.expect(res.statusCode).to.equal(200);
-                done();
-            });
+        chai.request(server).post('/users/delete')
+        .send({uid:userData.uid})
+        .set("Authorization",userData.token)
+        .end((err,res)=>{
+            chai.expect(res.statusCode).to.equal(200);
+            done();
+        });
     });
 });
