@@ -12,12 +12,11 @@ var screetKey = require('./config')
 var bodyParser = require('body-parser');
 
 var mongoose =require('mongoose');
-
-const  mongoAtlasUri ="mongodb+srv://hayati:t0BVw6yImkWyDk6J@realmcluster.5evrz.mongodb.net/userList?retryWrites=true&w=majority";
+const mongoUrl="mongodb://hayati:t0BVw6yImkWyDk6J@realmcluster-shard-00-00.5evrz.mongodb.net:27017,realmcluster-shard-00-01.5evrz.mongodb.net:27017,realmcluster-shard-00-02.5evrz.mongodb.net:27017/userList?ssl=true&replicaSet=atlas-109l7n-shard-0&authSource=admin&retryWrites=true&w=majority";
 try {
   // Connect to the MongoDB cluster
    mongoose.connect(
-    mongoAtlasUri,
+    mongoUrl,
     { useNewUrlParser: true, useUnifiedTopology: true },
     (err) => console.log(" Mongoose is connected",err)
   );

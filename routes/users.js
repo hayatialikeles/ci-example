@@ -27,7 +27,7 @@ router.post('/login', function(req, res, next) {
               username:data.username,
               email:data.email,
               age:data.age
-            },req.app.get('scretKey'),{expiresIn:720});
+            },req.app.get('scretKey'),{expiresIn:'365d'});
 
 
           res.status(200).json({
@@ -67,8 +67,7 @@ router.post('/register', function(req, res, next) {
           username:username,
           age:age,
           password:password,
-          email:email,
-          score:0
+          email:email
       });
 
       addState.save((err,data)=>{

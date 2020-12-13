@@ -24,7 +24,7 @@ router.get('/get/last/approval',authMiddle,function(req, res, next) {
       }
     });
 });
-router.post('/new/post',authMiddle, function(req, res, next) {
+router.post('/new',authMiddle, function(req, res, next) {
   if(
     req.body.title &&
     req.body.explanation 

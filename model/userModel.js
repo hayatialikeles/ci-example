@@ -1,12 +1,11 @@
 const mongoose=require('mongoose');
-const validator=require('validator');
 
 const Schema = mongoose.Schema;
 let userSchema = new Schema({
   fullname:String,
-  username:{type:String,unique:true},
+  username:String,
   age:Number,
-  email:{type:String,validate:[validator.isEmail,"E-posta formatı doğru değil !"]},
+  email:String,
   password:String
 });
 
