@@ -60,6 +60,9 @@ describe('user router',()=>{
             done();
         })
     });
+
+
+    // delete created items
     it("delete testing",function(done){
         chai.request(server).post('/users/delete')
         .send({uid:userData.uid})

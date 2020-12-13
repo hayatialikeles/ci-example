@@ -1,7 +1,8 @@
 const mongoose=require('mongoose');
 const validator=require('validator');
+
 const Schema = mongoose.Schema;
-let kullaniciSchema = new Schema({
+let userSchema = new Schema({
   fullname:String,
   username:{type:String,unique:true},
   age:Number,
@@ -9,4 +10,4 @@ let kullaniciSchema = new Schema({
   password:String
 });
 
-module.exports = mongoose.model('kullanici', kullaniciSchema);
+module.exports = mongoose.model('users', userSchema);

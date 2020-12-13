@@ -6,22 +6,6 @@ var router = express.Router();
 
 const kullanici =require('../model/userModel')
 
-router.post("/reset-users",authMiddle,function(req, res, next){
-  kullanici.deleteMany((err,data)=>{
-    if(data)
-    {
-      res.status(200).json({
-        message:'İŞLEM BAŞARI İLE GERÇEKLEŞTİ !'
-      })
-    }else{
-      res.status(404).json({
-        message:'İŞLEM BAŞARISIZ OLDU '
-      })
-    }
-      
-  });
-});
-
 router.post('/login', function(req, res, next) {
   if(req.body.username &&
     req.body.password
@@ -66,7 +50,6 @@ router.post('/login', function(req, res, next) {
       })
     }
 });
-
 router.post('/register', function(req, res, next) {
   if(req.body.username &&
     req.body.fullname && 
@@ -84,7 +67,8 @@ router.post('/register', function(req, res, next) {
           username:username,
           age:age,
           password:password,
-          email:email
+          email:email,
+          score:0
       });
 
       addState.save((err,data)=>{
@@ -106,13 +90,6 @@ router.post('/register', function(req, res, next) {
       })
     }
 });
-
-router.get("/getUser",authMiddle,function(req, res, next){
-  kullanici.find({},(err,data)=>{
-    res.json(data);
-  });
-});
-
 router.post("/delete",authMiddle,function(req, res, next){
   if(req.body.uid)
   {
@@ -133,7 +110,17 @@ router.post("/delete",authMiddle,function(req, res, next){
       message:'paramter error'
     })
   }
-})
+});
+
+
+
+router.get("/getUser",authMiddle,function(req, res, next){
+  kullanici.find({},{
+    password:0
+  },(err,data)=>{
+    res.json(data);
+  });
+});
 
 
 module.exports = router;
