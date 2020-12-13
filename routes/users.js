@@ -15,7 +15,7 @@ router.post("/reset-users",authMiddle,function(req, res, next){
       })
     }else{
       res.status(404).json({
-        message:'İŞLEM BAŞARISIZ OLDU !'
+        message:'İŞLEM BAŞARISIZ OLDU '
       })
     }
       
