@@ -7,7 +7,7 @@ const postScheme=new Schema({
     title:String,
     explanation:String,
     addDate:String,
-    addUid:Number,
+    addUid:String,
     approvalState:{
         type:Number,
         default:2 // 1=approval || 2=checking  || 3=rejected

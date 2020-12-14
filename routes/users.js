@@ -110,9 +110,6 @@ router.post("/delete",authMiddle,function(req, res, next){
     })
   }
 });
-
-
-
 router.get("/getUser",authMiddle,function(req, res, next){
   kullanici.find({},{
     password:0
